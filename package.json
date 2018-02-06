@@ -4,7 +4,22 @@
   "description": "Serving your favicons.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "start": "node index.js",
+    "test": "npm run test:js",
+    "preversion": "git checkout master && git merge --squash dev && npm test",
+    "version": "git add -A",
+    "postversion": "git push && git push --tags && git checkout - && git merge master -m 'Merge with master' && git push",
+    "\n# DEPLOYMENT SCRIPTS:": "",
+    "predeploy": "git checkout master",
+    "deploy": "git push prod master",
+    "postdeploy": "git checkout - && git push",
+    "\n# TESTING SCRIPTS:": "",
+    "test:js": "mocha --recursive",
+    "test:js:w": "mocha --recursive --watch",
+    "coverage": "codecov",
+    "lint:js": "eslint --ext js,vue src test",
+    "\n# HUSKY GIT HOOKS:": "",
+    "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -15,5 +30,21 @@
   "bugs": {
     "url": "https://github.com/faviator/my.faviator.xyz/issues"
   },
-  "homepage": "https://github.com/faviator/my.faviator.xyz#readme"
+  "homepage": "https://github.com/faviator/my.faviator.xyz#readme",
+  "engines": {
+    "node": ">=4",
+    "npm": ">=2"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^5.0.3"
+  },
+  "devDependencies": {
+    "@ycm.jason/eslint-config": "^1.0.0",
+    "codecov": "^3.0.0",
+    "eslint": "^4.17.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
+    "mocha": "^5.0.0"
+  }
 }
