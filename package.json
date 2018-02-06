@@ -1,7 +1,7 @@
 {
-  "name": "my.faviator.xyz",
+  "name": "api.faviator.xyz",
   "version": "0.1.0",
-  "description": "Serving your favicons.",
+  "description": "The API that serves faviator.xyz.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -23,17 +23,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/faviator/my.faviator.xyz.git"
+    "url": "git+ssh://git@github.com/faviator/api.faviator.xyz.git"
   },
   "author": "Jason Yu <me@ycmjason.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/faviator/my.faviator.xyz/issues"
+    "url": "https://github.com/faviator/api.faviator.xyz/issues"
   },
-  "homepage": "https://github.com/faviator/my.faviator.xyz#readme",
+  "homepage": "https://github.com/faviator/api.faviator.xyz#readme",
   "engines": {
-    "node": ">=4",
-    "npm": ">=2"
+    "node": ">=8",
+    "npm": ">=5.6"
   },
   "dependencies": {
     "express": "^4.16.2",
