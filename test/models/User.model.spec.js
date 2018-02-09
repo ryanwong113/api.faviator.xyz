@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const { createDummy } = require('./helpers/User.model.helpers');
+const { createDummy } = require('./helpers/User.model');
 
 const User = require('../../lib/models/User.model');
 
@@ -41,41 +41,40 @@ module.exports = () => {
         }),
       ])).rejects.toThrow();
     });
+  });
 
-    describe('findOneOrCreate()', () => {
-      const existingUser = createDummy();
+  describe('.findOneOrCreate()', () => {
+    const existingUser = createDummy();
 
-      beforeEach(async () => {
-        await User.create([
-          existingUser,
-          createDummy(),
-        ]);
-      });
+    beforeEach(async () => {
+      await User.create([
+        existingUser,
+        createDummy(),
+      ]);
+    });
 
-      test('it should be defined', () => {
-        expect(User.findOneOrCreate).toBeDefined();
-      });
+    test('it should be defined', () => {
+      expect(User.findOneOrCreate).toBeDefined();
+    });
 
-      test('it can find the existing user, without creating', async () => {
-        const user = await User.findOneOrCreate({
-          'linked_accounts.facebook.id': existingUser.linked_accounts.facebook.id,
-        }, existingUser);
-        expect(user).toBeDefined();
-        expect(user).toMatchObject(existingUser);
-        expect(await User.count({})).toBe(2);
-      });
+    test('it can find the existing user, without creating', async () => {
+      const user = await User.findOneOrCreate({
+        'linked_accounts.facebook.id': existingUser.linked_accounts.facebook.id,
+      }, existingUser);
+      expect(user).toBeDefined();
+      expect(user).toMatchObject(existingUser);
+      expect(await User.count({})).toBe(2);
+    });
 
-      test('it will create a new user when not found and return it', async () => {
-        const newUser = createDummy();
+    test('it will create a new user when not found and return it', async () => {
+      const newUser = createDummy();
 
-        const user = await User.findOneOrCreate({
-          'linked_accounts.facebook.id': newUser.linked_accounts.facebook.id,
-        }, newUser);
-        expect(user).toBeDefined();
-        expect(user).toMatchObject(newUser);
-        expect(await User.count({})).toBe(3);
-      });
-
+      const user = await User.findOneOrCreate({
+        'linked_accounts.facebook.id': newUser.linked_accounts.facebook.id,
+      }, newUser);
+      expect(user).toBeDefined();
+      expect(user).toMatchObject(newUser);
+      expect(await User.count({})).toBe(3);
     });
 
   });
