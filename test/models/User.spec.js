@@ -1,8 +1,6 @@
-const mongoose = require('mongoose');
+const { createDummy } = require('./helpers/User');
 
-const { createDummy } = require('./helpers/User.model');
-
-const User = require('../../lib/models/User.model');
+const { User, FACEBOOK_ID_PATH } = require('../../lib/models/User');
 
 module.exports = () => {
   describe('.create()', () => {
@@ -13,7 +11,7 @@ module.exports = () => {
         ...dummy,
         loool: 300,
         irrel: 'efkj',
-      })
+      });
 
       expect(user).toMatchObject(dummy);
       expect(user.loool).toBeUndefined();
@@ -36,8 +34,8 @@ module.exports = () => {
           linked_accounts: {
             facebook: {
               id: dummy.linked_accounts.facebook.id,
-            }
-          }
+            },
+          },
         }),
       ])).rejects.toThrow();
     });
@@ -59,7 +57,7 @@ module.exports = () => {
 
     test('it can find the existing user, without creating', async () => {
       const user = await User.findOneOrCreate({
-        'linked_accounts.facebook.id': existingUser.linked_accounts.facebook.id,
+        [FACEBOOK_ID_PATH]: existingUser.linked_accounts.facebook.id,
       }, existingUser);
       expect(user).toBeDefined();
       expect(user).toMatchObject(existingUser);
@@ -70,7 +68,7 @@ module.exports = () => {
       const newUser = createDummy();
 
       const user = await User.findOneOrCreate({
-        'linked_accounts.facebook.id': newUser.linked_accounts.facebook.id,
+        [FACEBOOK_ID_PATH]: newUser.linked_accounts.facebook.id,
       }, newUser);
       expect(user).toBeDefined();
       expect(user).toMatchObject(newUser);

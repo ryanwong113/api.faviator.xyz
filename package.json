@@ -18,8 +18,8 @@
     "test:js:w": "npm run test:js:w -- --watch",
     "coverage": "codecov",
     "lint:js": "eslint .",
-    "start:mongo-express": "($(cat .env | xargs -n1 echo export) && mongo-express -U $MONGO_URL)",
-    "start:mongo-express:test": "($(cat .env | xargs -n1 echo export) && mongo-express -U $MONGO_TEST_URL)",
+    "start:mongo-express": "($(cat .env | xargs -n1 echo export) && VCAP_APP_PORT=8082 mongo-express -U $MONGO_URL)",
+    "start:mongo-express:test": "($(cat .env | xargs -n1 echo export) && VCAP_APP_PORT=8082 mongo-express -U $MONGO_TEST_URL)",
     "mongo:test": "mongo $MONGO_TEST_URL",
     "\n# HUSKY GIT HOOKS:": "",
     "precommit": "lint-staged"
@@ -39,10 +39,13 @@
     "npm": ">=5.6"
   },
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
     "faviator": "^0.1.4",
     "isemail": "^3.1.1",
     "mongoose": "^5.0.4",
+    "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1"
   },
@@ -52,7 +55,7 @@
     "dotenv": "^5.0.0",
     "eslint": "^4.17.0",
     "husky": "^0.14.3",
-    "jest": "^22.2.1",
+    "jest": "^22.2.2",
     "lint-staged": "^6.1.0",
     "lodash.pick": "^4.4.0",
     "mongo-express": "^0.44.0"

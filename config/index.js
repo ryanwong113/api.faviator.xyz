@@ -4,11 +4,13 @@ const pickKeys = require('lodash.pick');
 const DEFAULTS = (process.env.NODE_ENV === 'production')?
   {
     PROTOCOL: 'https',
-    HOST: 'api.faviator.xyz',
+    APP_HOST: 'faviator.xyz',
+    API_HOST: 'api.faviator.xyz',
   }:
   {
     PROTOCOL: 'http',
-    HOST: 'api.staging.faviator.xyz',
+    APP_HOST: 'staging.faviator.xyz',
+    API_HOST: 'api.staging.faviator.xyz',
   };
 
 module.exports = {
@@ -17,10 +19,13 @@ module.exports = {
     // site configs
     'NODE_ENV',
     'PROTOCOL',
-    'HOST',
+    'APP_HOST',
+    'API_HOST',
+    'SESSION_SECRET',
 
     // database
     'MONGO_URL',
+    'MONGO_TEST_URL',
 
     // facebook
     'FACEBOOK_APP_ID',
