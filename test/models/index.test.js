@@ -3,5 +3,7 @@ const { install } = require('../helpers/mongo');
 describe('Models', () => {
   install();
 
-  describe('User', require('./User.spec'));
+  [
+    'User',
+  ].forEach(n => describe(n, require(`./${n}.spec`)));
 });
