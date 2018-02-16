@@ -44,9 +44,9 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
-    "faviator": "^0.1.4",
+    "faviator": "^0.2.0",
     "isemail": "^3.1.1",
-    "mongoose": "^5.0.4",
+    "mongoose": "^5.0.6",
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1"
@@ -57,7 +57,7 @@
     "dotenv": "^5.0.0",
     "eslint": "^4.17.0",
     "husky": "^0.14.3",
-    "jest": "^22.2.2",
+    "jest": "^22.3.0",
     "lint-staged": "^6.1.0",
     "lodash.pick": "^4.4.0",
     "mongo-express": "^0.44.0"
