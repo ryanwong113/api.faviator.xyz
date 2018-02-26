@@ -1,6 +1,7 @@
 const { createDummy } = require('./helpers/User');
 
-const { User, FACEBOOK_ID_PATH } = require('../../lib/models/User');
+const { User } = require('../../lib/models');
+const { FACEBOOK_ID_PATH } = require('../../lib/models/User');
 
 module.exports = () => {
   describe('.create()', () => {

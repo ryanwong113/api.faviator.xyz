@@ -15,7 +15,7 @@
     "postdeploy": "git checkout - && git push",
     "\n# TESTING SCRIPTS:": "",
     "test:js": "jest",
-    "test:js:w": "npm run test:js:w -- --watch",
+    "test:js:w": "npm run test:js -- --watch",
     "coverage": "codecov",
     "lint:js": "eslint .",
     "start:mongo-express": "($(cat .env | xargs -n1 echo export) && VCAP_APP_PORT=8082 mongo-express -U $MONGO_URL)",
@@ -60,6 +60,7 @@
     "jest": "^22.3.0",
     "lint-staged": "^6.1.0",
     "lodash.pick": "^4.4.0",
-    "mongo-express": "^0.44.0"
+    "mongo-express": "^0.44.0",
+    "mongodb-memory-server": "^1.7.0"
   }
 }

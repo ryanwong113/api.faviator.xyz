@@ -1,11 +1,18 @@
+const MongodbMemoryServer = require('mongodb-memory-server').default;
 const config = require('../../config');
 const mongoose = require('mongoose');
 
-const connect = () => mongoose.connect(config.MONGO_TEST_URL);
+const mongod = new MongodbMemoryServer();
+
+const connect = async () => {
+  const uri = await mongod.getConnectionString();
+  mongoose.connect(uri);
+};
 
 const destroy = async () => {
   await mongoose.connection.dropDatabase();
   await mongoose.disconnect();
+  await mongod.stop();
 };
 
 const cleanup = () => {

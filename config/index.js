@@ -25,7 +25,6 @@ module.exports = {
 
     // database
     'MONGO_URL',
-    'MONGO_TEST_URL',
 
     // facebook
     'FACEBOOK_APP_ID',

@@ -2,11 +2,8 @@ const { install } = require('../../helpers/mongo');
 
 describe('faviations', () => {
   install();
+  it(() => {});
 
   [
-    'create',
-    'createFavicon',
-    'findFavicon',
-    'findOne',
   ].forEach(n => describe(n, require(`./${n}.spec`)));
 });
